@@ -6,7 +6,13 @@ public class Main {
         int b = 0;
         try{//try all the things that happen
        //   divide(a,b);
-       throw new Exception("just for fun");
+       String name = "Kunal";//that is making own custom exception
+       if(name.equals(name)){
+        throw new Custom_exception("name is kunal");
+       }
+        }
+        catch(Custom_exception e){
+            System.out.println(e.getMessage());
         }
 
           
