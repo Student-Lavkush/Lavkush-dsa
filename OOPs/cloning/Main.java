@@ -1,9 +1,10 @@
 package OOPs.cloning;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Human kunal = new Human(19,"Lavkush");
-        Human khush = new Human(kunal);
-        System.out.println(khush.age);
+     
+      Human khush = (Human)kunal.clone();
+        System.out.println(khush.age+" "+khush.name);
     }
 }
