@@ -1,11 +1,11 @@
 package linkedlist;
 
-public class Customlinkedlist {
+public class Singly_linked_list {
     private Node head;
     private Node tail;
     private int size;
 
-    public Customlinkedlist() {
+    public Singly_linked_list() {
         this.size = 0;
     }
 
@@ -19,6 +19,62 @@ public class Customlinkedlist {
         size += 1;
     }
 
+    public Node find(int value) {
+        Node node = head;
+        while (node != null) {
+            if (node.value == value) {
+                return node;
+
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
+    public int deletionFirst() {
+        int val = head.value;
+        head = head.next;
+
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public int delete(int index) {
+        if (index == 0) {
+            return deletionFirst();
+        }
+        if (index == size - 1) {
+            return deletionlast();
+        }
+        Node prev = get(index - 1);
+        int val = prev.next.value;
+        prev.next = prev.next.next;
+        return val;
+
+    }
+
+    public int deletionlast() {
+        if (size <= 1) {
+            return deletionFirst();
+        }
+        Node secondlast = get(size - 2);
+        int val = tail.value;
+        tail = secondlast;
+        tail.next = null;
+        return val;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
     public void insert(int value, int index) {
         if (index == 0) {
             insertFirst(value);
@@ -29,11 +85,11 @@ public class Customlinkedlist {
             return;
         }
         Node temp = head;
-        for(int i =1;i<index;i++){
+        for (int i = 1; i < index; i++) {
             temp = temp.next;
         }
-        Node node = new Node(value,temp.next);
-        temp.next= node;
+        Node node = new Node(value, temp.next);
+        temp.next = node;
         size++;
 
     }
